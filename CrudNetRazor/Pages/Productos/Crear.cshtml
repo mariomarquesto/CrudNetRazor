@@ -1,0 +1,56 @@
+﻿@page
+@model CrudNetRazor.Pages.Productos.CrearModel
+@{
+    ViewData["Title"] = "Crear nuevo producto";
+}
+
+<div class="card mt-4">
+    <div class="card-header bg-dark text-white">
+        <h2 class="text-info mb-0">Crear Nuevo Producto</h2>
+    </div>
+
+    <div class="card-body">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <div class="mb-3 row">
+                <label asp-for="Producto.NombreProducto" class="col-md-3 col-form-label"></label>
+                <div class="col-md-9">
+                    <input asp-for="Producto.NombreProducto" class="form-control" />
+                    <span asp-validation-for="Producto.NombreProducto" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label asp-for="Producto.Descripcion" class="col-md-3 col-form-label"></label>
+                <div class="col-md-9">
+                    <input asp-for="Producto.Descripcion" class="form-control" />
+                    <span asp-validation-for="Producto.Descripcion" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label asp-for="Producto.EnStock" class="col-md-3 col-form-label"></label>
+                <div class="col-md-9">
+                    <input asp-for="Producto.EnStock" class="form-control" />
+                    <span asp-validation-for="Producto.EnStock" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label asp-for="Producto.Precio" class="col-md-3 col-form-label"></label>
+                <div class="col-md-9">
+                    <input asp-for="Producto.Precio" class="form-control" />
+                    <span asp-validation-for="Producto.Precio" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Añadir más campos aquí -->
+
+            <div class="d-flex justify-content-end mt-4">
+                <a asp-page="./Index" class="btn btn-secondary me-2">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Crear</button>
+            </div>
+        </form>
+    </div>
+</div>

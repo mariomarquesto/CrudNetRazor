@@ -1,0 +1,59 @@
+﻿@page
+@model CrudNetRazor.Pages.Productos.IndexModel
+@{
+    ViewData["Title"] = "Lista de productos";
+}
+
+<h3 class="text-center">Mira nuestros productos</h3>
+
+<div class="card-header bg-dark">
+    <div class="row">
+        <div class="col-sm-9">
+            <h2 class="text-info">Lista de productos</h2>
+        </div>
+        <div class="col-sm-3">
+            <a asp-page="Crear" class="btn btn-primary">Crear Nuevo Producto</a>
+        </div>
+    </div>
+</div>
+
+<div class="card-body">
+    @if (Model.Productos.Any())
+    {
+        <br />
+        <table class="table table-striped border">
+            <thead>
+                <tr class="table-secondary">
+                    <th>@Html.DisplayNameFor(m => m.Productos.First().Id)</th>
+                    <th>@Html.DisplayNameFor(m => m.Productos.First().NombreProducto)</th>
+                    <th>@Html.DisplayNameFor(m => m.Productos.First().Descripcion)</th>
+                    <th>@Html.DisplayNameFor(m => m.Productos.First().EnStock)</th>
+                    <th>@Html.DisplayNameFor(m => m.Productos.First().Precio)</th>
+                    <th>@Html.DisplayNameFor(m => m.Productos.First().FechaCreacion)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Productos)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NombreProducto)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EnStock)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FechaCreacion)</td>
+                        <td>
+                            <a asp-route-itemid="@item.Id" asp-page="Editar" class="btn btn-success btn-sm">Editar</a>
+                            <button asp-page-handler="Borrar" asp-route-itemid="@item.Id" onclick="return confirm('¿Está seguro de querer borrar el producto?')" class="btn btn-danger btn-sm">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No hay productos disponibles</p>
+    }
+</div>
